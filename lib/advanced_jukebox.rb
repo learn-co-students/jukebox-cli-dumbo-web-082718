@@ -12,34 +12,18 @@
 # "Graduation Failed" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/07.mp3'
 # }
 
-def help
-  #this method should be the same as in jukebox.rb
-
-end
-
-
-
-def list(my_songs)
-  #this method is different! Collect the keys of the my_songs hash and 
-  #list the songs by name
-end
-
-
 def play(my_songs)
-  #this method is slightly different!
-  #you should still ask the user for input and collect their song choice
-  #this time, only allow user's to input a song name
-  #check to see if the name they give is in fact a key of the my_songs hash
-  #if it isn't, tell them their choice is invalid
-  #if it is, play the song using the system 'open <file path>' syntax
-  #get the file path of the song by looking it up in the my_songs hash
-  
+  list(songs)
+  puts
+  puts "What song do you want to play. Enter song name or number"
+  song_pick = gets.chomp.downcase
+  # songs.each_with_index do |song,index|
+    if songs.include?(song_pick)
+      puts "Now playing song #{song_pick}"
+    elsif songs[song_pick.to_i - 1]
+      puts "Now playing #{songs[song_pick.to_i - 1]}"
+    else
+      puts "Invalid input. Please try again!"
+    end
 end
-
-def exit_jukebox
-  #this method is the same as in jukebox.rb
-end
-
-def run(my_songs)
-  #this method is the same as in jukebox.rb
-end
+ run(my_songs)	
